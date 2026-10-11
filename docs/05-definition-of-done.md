@@ -4,26 +4,26 @@
 
 ## Requirement-to-test traceability
 
-Tests named here are planned files; T IDs refer to the [build plan](03-build-plan.md).
+Tests named here are planned files; M IDs refer to the [public milestones](03-build-plan.md).
 
-| Requirements | Planned verification | Task |
+| Requirements | Planned verification | Milestone |
 |---|---|---|
-| FR-01 | tests/integration/test_ingest.py: JSON/CSV equivalence, atomic invalid import | T05–T07 |
-| FR-02 | tests/unit/test_calculations.py: cents, totals, overflow | T08 |
-| FR-03 | tests/integration/test_idempotency.py: repeat/conflict/retry | T07, T21 |
-| FR-04 | tests/unit/test_matching.py: references, unique fallback, ambiguity | T09–T10 |
-| FR-05 | tests/unit/test_duplicates.py: same/different suppliers, conflicting duplicates | T11 |
-| FR-06 | tests/unit/test_amounts.py: every comparison and tolerance boundary | T12 |
-| FR-07 | tests/unit/test_partial_payments.py: due-date boundary, overpayment | T13 |
-| FR-08 | tests/unit/test_missing_records.py: invoice/order/ledger, legitimate unpaid | T14 |
-| FR-09 | tests/unit/test_citations.py: broken pointer, wrong source, arithmetic | T16, T20 |
-| FR-10 | tests/integration/test_ai_boundary.py: malformed output, unsupported fact, fallback | T18–T20 |
-| FR-11 | tests/integration/test_reviews.py: transitions, stale versions, reason required | T21 |
-| FR-12 | Recorded keyboard and narrow-screen UI walkthrough; API contract tests | T23–T25 |
-| FR-13 | tests/integration/test_exports.py: snapshot fidelity and safe escaping | T26 |
-| FR-14 | tests/integration/test_failures.py: prompt injection, oversized file, timeout, budget | T30 |
-| FR-15 | tests/evaluation/test_protocol.py: projection canaries, opaque IDs, ancestry split/clusters and denominators | T27–T35 |
-| FR-16 | Recorded clean-environment setup and complete demo | T36 |
+| FR-01 | tests/integration/test_ingest.py: JSON/CSV equivalence, atomic invalid import | M1 |
+| FR-02 | tests/unit/test_calculations.py: cents, totals, overflow | M2 |
+| FR-03 | tests/integration/test_idempotency.py: repeat/conflict/retry | M1, M3 |
+| FR-04 | tests/unit/test_matching.py: references, unique fallback, ambiguity | M2 |
+| FR-05 | tests/unit/test_duplicates.py: same/different suppliers, conflicting duplicates | M2 |
+| FR-06 | tests/unit/test_amounts.py: every comparison and tolerance boundary | M2 |
+| FR-07 | tests/unit/test_partial_payments.py: due-date boundary, overpayment | M2 |
+| FR-08 | tests/unit/test_missing_records.py: invoice/order/ledger, legitimate unpaid | M2 |
+| FR-09 | tests/unit/test_citations.py: broken pointer, wrong source, arithmetic | M3, M4 |
+| FR-10 | tests/integration/test_ai_boundary.py: malformed output, unsupported fact, fallback | M4 |
+| FR-11 | tests/integration/test_reviews.py: transitions, stale versions, reason required | M3 |
+| FR-12 | Recorded keyboard and narrow-screen UI walkthrough; API contract tests | M3 |
+| FR-13 | tests/integration/test_exports.py: snapshot fidelity and safe escaping | M3 |
+| FR-14 | tests/integration/test_failures.py: prompt injection, oversized file, timeout, budget | M4, M5 |
+| FR-15 | tests/evaluation/test_protocol.py: projection canaries, opaque IDs, ancestry split/clusters and denominators | M5 |
+| FR-16 | Recorded clean-environment setup and complete demo | M6 |
 
 ## Artifact completion and product acceptance
 

@@ -21,3 +21,6 @@ model-traces/
 dist/
 build/
 *.egg-info/
+
+# Internal full handoff lives outside this public repository.
+BLUEPRINT.html

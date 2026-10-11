@@ -8,18 +8,10 @@
     "expected_links_reference_present_records": true,
     "expected_outstanding_balances_arithmetically_checked": true,
     "csv_files_match_json_business_records": 4,
-    "task_count": 38,
-    "all_task_statuses": "not_started",
-    "dependency_order_valid": true,
-    "estimated_focused_hours": 169,
-    "broken_local_markdown_links": 0,
-    "blueprint_markdown_words_excluding_working_instructions": 7999,
     "application_python_files": 0,
     "sanitized_projection_contract_examples_validated_in_memory": 8,
     "metadata_id_filename_injections_rejected_by_schema": 24,
-    "runtime_projection_or_leakage_tests_run": false,
-    "task_text_and_tracker_consistent": true,
-    "literal_paragraph_escapes_remaining": false
+    "runtime_projection_or_leakage_tests_run": false
   },
   "fixture_counts": {
     "development_seeds": 8,
@@ -33,5 +25,6 @@
     "split_and_uncertainty_unit": "highest shared lineage",
     "provided_seed_independent_lineages": 1,
     "template_family_counts_are_independence_targets_not_power_claims": true
-  }
+  },
+  "record_status": "Historical documentation validation before public-document curation; not a validation of the current whole repository."
 }
