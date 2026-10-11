@@ -2,6 +2,8 @@
 
 ![Finance Exception Investigator — Follow the discrepancy. Preserve the evidence.](docs/assets/overview.svg)
 
+[![Documentation integrity](https://github.com/vishwanathmuthuraman/finance-exception-investigator/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/finance-exception-investigator/actions/workflows/docs.yml)
+
 **Can a reviewer trace a financial mismatch from its amount to the records that explain it?**
 
 Use deterministic reconciliation to establish the exception, then attach record-linked explanations and a reviewable evidence trail.
