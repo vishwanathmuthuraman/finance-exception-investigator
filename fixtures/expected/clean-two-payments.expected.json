@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "clean-two-payments",
+  "contains_exception": false,
+  "primary_category": null,
+  "expected_outcome": "clear",
+  "expected_findings": [],
+  "expected_links": [
+    {
+      "from_record_id": "I1",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "P1",
+      "to_record_id": "I1",
+      "relationship": "payment_invoice"
+    },
+    {
+      "from_record_id": "L1",
+      "to_record_id": "I1",
+      "relationship": "ledger_invoice"
+    },
+    {
+      "from_record_id": "L2",
+      "to_record_id": "P1",
+      "relationship": "ledger_payment"
+    },
+    {
+      "from_record_id": "P2",
+      "to_record_id": "I1",
+      "relationship": "payment_invoice"
+    },
+    {
+      "from_record_id": "L3",
+      "to_record_id": "P2",
+      "relationship": "ledger_payment"
+    }
+  ],
+  "expected_outstanding_minor": {
+    "I1": 0
+  },
+  "required_evidence": [
+    {
+      "record_id": "I1",
+      "pointer": "/amount_minor"
+    },
+    {
+      "record_id": "P1",
+      "pointer": "/amount_minor"
+    },
+    {
+      "record_id": "P2",
+      "pointer": "/amount_minor"
+    }
+  ],
+  "diagnosis_concepts": [
+    "Two partial payments sum exactly to the invoice total."
+  ],
+  "oracle_note": "Expected rules semantics only; this file is evaluator-only and is not a measured application output."
+}

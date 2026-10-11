@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "clean-partial",
+  "contains_exception": false,
+  "primary_category": null,
+  "expected_outcome": "clear",
+  "expected_findings": [],
+  "expected_links": [
+    {
+      "from_record_id": "I1",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "P1",
+      "to_record_id": "I1",
+      "relationship": "payment_invoice"
+    },
+    {
+      "from_record_id": "L1",
+      "to_record_id": "I1",
+      "relationship": "ledger_invoice"
+    },
+    {
+      "from_record_id": "L2",
+      "to_record_id": "P1",
+      "relationship": "ledger_payment"
+    }
+  ],
+  "expected_outstanding_minor": {
+    "I1": 6000
+  },
+  "required_evidence": [
+    {
+      "record_id": "I1",
+      "pointer": "/due_on"
+    },
+    {
+      "record_id": "I1",
+      "pointer": "/amount_minor"
+    },
+    {
+      "record_id": "P1",
+      "pointer": "/amount_minor"
+    }
+  ],
+  "diagnosis_concepts": [
+    "USD 60 remains outstanding.",
+    "The invoice is not overdue as of 2026-01-31."
+  ],
+  "oracle_note": "Expected rules semantics only; this file is evaluator-only and is not a measured application output."
+}

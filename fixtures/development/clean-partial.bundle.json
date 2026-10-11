@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "clean-partial",
+  "template_family": "dev-clean-partial",
+  "as_of": "2026-01-31",
+  "currency": "USD",
+  "orders": [
+    {
+      "record_id": "O1",
+      "supplier_id": "SYN-SUP-001",
+      "order_number": "PO-001",
+      "ordered_on": "2026-01-02",
+      "amount_minor": 10000,
+      "source": {
+        "file": "clean-partial.bundle.json",
+        "pointer": "/orders/0",
+        "row": null
+      }
+    }
+  ],
+  "invoices": [
+    {
+      "record_id": "I1",
+      "supplier_id": "SYN-SUP-001",
+      "invoice_number": "INV-001",
+      "order_ref": "PO-001",
+      "issued_on": "2026-01-05",
+      "due_on": "2026-02-10",
+      "amount_minor": 10000,
+      "source": {
+        "file": "clean-partial.bundle.json",
+        "pointer": "/invoices/0",
+        "row": null
+      }
+    }
+  ],
+  "payments": [
+    {
+      "record_id": "P1",
+      "supplier_id": "SYN-SUP-001",
+      "payment_reference": "PAY-001",
+      "invoice_ref": "INV-001",
+      "paid_on": "2026-01-15",
+      "amount_minor": 4000,
+      "source": {
+        "file": "clean-partial.bundle.json",
+        "pointer": "/payments/0",
+        "row": null
+      }
+    }
+  ],
+  "ledger_entries": [
+    {
+      "record_id": "L1",
+      "supplier_id": "SYN-SUP-001",
+      "entry_type": "invoice",
+      "invoice_ref": "INV-001",
+      "payment_ref": null,
+      "posted_on": "2026-01-05",
+      "amount_minor": 10000,
+      "source": {
+        "file": "clean-partial.bundle.json",
+        "pointer": "/ledger_entries/0",
+        "row": null
+      }
+    },
+    {
+      "record_id": "L2",
+      "supplier_id": "SYN-SUP-001",
+      "entry_type": "payment",
+      "invoice_ref": null,
+      "payment_ref": "PAY-001",
+      "posted_on": "2026-01-15",
+      "amount_minor": 4000,
+      "source": {
+        "file": "clean-partial.bundle.json",
+        "pointer": "/ledger_entries/1",
+        "row": null
+      }
+    }
+  ],
+  "lineage_group": "seed-purchase-to-payment-v1"
+}

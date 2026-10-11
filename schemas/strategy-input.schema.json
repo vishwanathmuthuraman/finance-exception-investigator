@@ -1,0 +1,302 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^b_[0-9a-f]{16}$"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "currency": {
+      "const": "USD"
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/order"
+      }
+    },
+    "invoices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/invoice"
+      }
+    },
+    "payments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/payment"
+      }
+    },
+    "ledger_entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ledger"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "as_of",
+    "currency",
+    "orders",
+    "invoices",
+    "payments",
+    "ledger_entries"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "locator_id": {
+          "type": "string",
+          "pattern": "^s_[0-9a-f]{16}$"
+        }
+      },
+      "required": [
+        "locator_id"
+      ]
+    },
+    "order": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "pattern": "^r_[0-9a-f]{16}$"
+        },
+        "supplier_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "order_number": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ordered_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "amount_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000000
+        }
+      },
+      "required": [
+        "record_id",
+        "supplier_id",
+        "source",
+        "order_number",
+        "ordered_on",
+        "amount_minor"
+      ]
+    },
+    "invoice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "pattern": "^r_[0-9a-f]{16}$"
+        },
+        "supplier_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "invoice_number": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issued_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "due_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "amount_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000000
+        }
+      },
+      "required": [
+        "record_id",
+        "supplier_id",
+        "source",
+        "invoice_number",
+        "order_ref",
+        "issued_on",
+        "due_on",
+        "amount_minor"
+      ]
+    },
+    "payment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "pattern": "^r_[0-9a-f]{16}$"
+        },
+        "supplier_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "payment_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "invoice_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "paid_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "amount_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000000
+        }
+      },
+      "required": [
+        "record_id",
+        "supplier_id",
+        "source",
+        "payment_reference",
+        "invoice_ref",
+        "paid_on",
+        "amount_minor"
+      ]
+    },
+    "ledger": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "pattern": "^r_[0-9a-f]{16}$"
+        },
+        "supplier_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "entry_type": {
+          "enum": [
+            "invoice",
+            "payment"
+          ]
+        },
+        "invoice_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "payment_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "posted_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "amount_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000000
+        }
+      },
+      "required": [
+        "record_id",
+        "supplier_id",
+        "source",
+        "entry_type",
+        "invoice_ref",
+        "payment_ref",
+        "posted_on",
+        "amount_minor"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "entry_type": {
+                "const": "invoice"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "invoice_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "payment_ref": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "entry_type": {
+                "const": "payment"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "payment_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "invoice_ref": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "title": "Sanitized strategy input projection; no evaluator metadata",
+  "$comment": "The same projection enters exact, rules and rules_ai. Opaque ID mappings and readable source locators remain evaluator-only until scoring completes."
+}

@@ -1,0 +1,185 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "bundle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contains_exception": {
+      "type": "boolean"
+    },
+    "primary_category": {
+      "enum": [
+        null,
+        "duplicate_invoice",
+        "amount_discrepancy",
+        "overdue_balance",
+        "missing_record",
+        "ambiguous_match"
+      ]
+    },
+    "expected_outcome": {
+      "enum": [
+        "clear",
+        "review_required",
+        "insufficient_evidence"
+      ]
+    },
+    "expected_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "duplicate_invoice",
+              "amount_discrepancy",
+              "overdue_balance",
+              "missing_record",
+              "ambiguous_match"
+            ]
+          },
+          "record_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "missing_record_type": {
+            "enum": [
+              null,
+              "order",
+              "invoice",
+              "invoice_ledger",
+              "payment_ledger"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "type",
+          "record_ids",
+          "missing_record_type",
+          "reason"
+        ]
+      }
+    },
+    "expected_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "from_record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to_record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relationship": {
+            "enum": [
+              "invoice_order",
+              "payment_invoice",
+              "ledger_invoice",
+              "ledger_payment"
+            ]
+          }
+        },
+        "required": [
+          "from_record_id",
+          "to_record_id",
+          "relationship"
+        ]
+      }
+    },
+    "expected_outstanding_minor": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "required_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pointer": {
+            "type": "string",
+            "pattern": "^/"
+          }
+        },
+        "required": [
+          "record_id",
+          "pointer"
+        ]
+      }
+    },
+    "diagnosis_concepts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "oracle_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "contains_exception",
+    "primary_category",
+    "expected_outcome",
+    "expected_findings",
+    "expected_links",
+    "expected_outstanding_minor",
+    "required_evidence",
+    "diagnosis_concepts",
+    "oracle_note"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evaluator-only expected outcome, not application input",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "contains_exception": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "primary_category": {
+            "type": "null"
+          },
+          "expected_outcome": {
+            "const": "clear"
+          },
+          "expected_findings": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

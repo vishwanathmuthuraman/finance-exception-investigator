@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "duplicate-invoice",
+  "contains_exception": true,
+  "primary_category": "duplicate_invoice",
+  "expected_outcome": "review_required",
+  "expected_findings": [
+    {
+      "type": "duplicate_invoice",
+      "record_ids": [
+        "I1",
+        "I2"
+      ],
+      "missing_record_type": null,
+      "reason": "Same supplier and invoice number appear twice; do not count duplicate liability."
+    }
+  ],
+  "expected_links": [
+    {
+      "from_record_id": "I1",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "I2",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "L2",
+      "to_record_id": "P1",
+      "relationship": "ledger_payment"
+    }
+  ],
+  "expected_outstanding_minor": {},
+  "required_evidence": [
+    {
+      "record_id": "I1",
+      "pointer": "/invoice_number"
+    },
+    {
+      "record_id": "I2",
+      "pointer": "/invoice_number"
+    }
+  ],
+  "diagnosis_concepts": [
+    "Duplicate invoice evidence requires review.",
+    "Do not arbitrarily choose an invoice for the payment or invoice ledger link."
+  ],
+  "oracle_note": "Expected rules semantics only; this file is evaluator-only and is not a measured application output."
+}

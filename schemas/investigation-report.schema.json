@@ -1,0 +1,347 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "bundle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strategy": {
+      "enum": [
+        "exact",
+        "rules",
+        "rules_ai"
+      ]
+    },
+    "configuration_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "outcome": {
+      "enum": [
+        "clear",
+        "review_required",
+        "insufficient_evidence",
+        "failed"
+      ]
+    },
+    "ai_status": {
+      "enum": [
+        "disabled",
+        "not_run",
+        "completed",
+        "failed"
+      ]
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "from_record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to_record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relationship": {
+            "enum": [
+              "invoice_order",
+              "payment_invoice",
+              "ledger_invoice",
+              "ledger_payment"
+            ]
+          }
+        },
+        "required": [
+          "from_record_id",
+          "to_record_id",
+          "relationship"
+        ]
+      }
+    },
+    "calculations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "calculation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operation": {
+            "enum": [
+              "sum",
+              "difference",
+              "outstanding"
+            ]
+          },
+          "input_citations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pointer": {
+                  "type": "string",
+                  "pattern": "^/"
+                }
+              },
+              "required": [
+                "record_id",
+                "pointer"
+              ]
+            },
+            "minItems": 1
+          },
+          "value_minor": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "calculation_id",
+          "operation",
+          "input_citations",
+          "value_minor"
+        ]
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "duplicate_invoice",
+              "amount_discrepancy",
+              "overdue_balance",
+              "missing_record",
+              "ambiguous_match"
+            ]
+          },
+          "record_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "missing_record_type": {
+            "enum": [
+              null,
+              "order",
+              "invoice",
+              "invoice_ledger",
+              "payment_ledger"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "type",
+          "record_ids",
+          "missing_record_type",
+          "reason"
+        ]
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "fact",
+              "hypothesis",
+              "missing_evidence"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pointer": {
+                  "type": "string",
+                  "pattern": "^/"
+                }
+              },
+              "required": [
+                "record_id",
+                "pointer"
+              ]
+            }
+          },
+          "calculation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "requires_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "claim_id",
+          "kind",
+          "text",
+          "citations",
+          "calculation_ids",
+          "requires_evidence"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "fact"
+                }
+              }
+            },
+            "then": {
+              "anyOf": [
+                {
+                  "properties": {
+                    "citations": {
+                      "minItems": 1
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "calculation_ids": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "missing_evidence"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "requires_evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "report_id",
+    "strategy",
+    "configuration_id",
+    "input_sha256",
+    "outcome",
+    "ai_status",
+    "links",
+    "calculations",
+    "findings",
+    "claims",
+    "failure_reason"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed versioned investigation report",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "clear"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "findings": {
+            "maxItems": 0
+          },
+          "failure_reason": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "failed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "failure_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "missing-ledger",
+  "contains_exception": true,
+  "primary_category": "missing_record",
+  "expected_outcome": "insufficient_evidence",
+  "expected_findings": [
+    {
+      "type": "missing_record",
+      "record_ids": [
+        "P1"
+      ],
+      "missing_record_type": "payment_ledger",
+      "reason": "Payment PAY-001 lacks its required payment ledger entry."
+    }
+  ],
+  "expected_links": [
+    {
+      "from_record_id": "I1",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "P1",
+      "to_record_id": "I1",
+      "relationship": "payment_invoice"
+    },
+    {
+      "from_record_id": "L1",
+      "to_record_id": "I1",
+      "relationship": "ledger_invoice"
+    }
+  ],
+  "expected_outstanding_minor": {
+    "I1": 0
+  },
+  "required_evidence": [
+    {
+      "record_id": "P1",
+      "pointer": "/payment_reference"
+    }
+  ],
+  "diagnosis_concepts": [
+    "Request the payment ledger evidence for PAY-001.",
+    "Do not invent an amount or source for the missing ledger entry."
+  ],
+  "oracle_note": "Expected rules semantics only; this file is evaluator-only and is not a measured application output."
+}

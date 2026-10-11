@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "status": "illustrative_development_seeds_only",
+  "bundle_count": 8,
+  "planned_development_count": 40,
+  "planned_heldout_count": 160,
+  "bundles": [
+    {
+      "bundle_id": "clean-settled",
+      "partition": "development",
+      "template_family": "dev-clean-settled",
+      "input": "development/clean-settled.bundle.json",
+      "expected": "expected/clean-settled.expected.json",
+      "contains_exception": false,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    },
+    {
+      "bundle_id": "clean-partial",
+      "partition": "development",
+      "template_family": "dev-clean-partial",
+      "input": "development/clean-partial.bundle.json",
+      "expected": "expected/clean-partial.expected.json",
+      "contains_exception": false,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    },
+    {
+      "bundle_id": "duplicate-invoice",
+      "partition": "development",
+      "template_family": "dev-duplicate-invoice",
+      "input": "development/duplicate-invoice.bundle.json",
+      "expected": "expected/duplicate-invoice.expected.json",
+      "contains_exception": true,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    },
+    {
+      "bundle_id": "amount-mismatch",
+      "partition": "development",
+      "template_family": "dev-amount-mismatch",
+      "input": "development/amount-mismatch.bundle.json",
+      "expected": "expected/amount-mismatch.expected.json",
+      "contains_exception": true,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    },
+    {
+      "bundle_id": "overdue-partial",
+      "partition": "development",
+      "template_family": "dev-overdue-partial",
+      "input": "development/overdue-partial.bundle.json",
+      "expected": "expected/overdue-partial.expected.json",
+      "contains_exception": true,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    },
+    {
+      "bundle_id": "missing-ledger",
+      "partition": "development",
+      "template_family": "dev-missing-ledger",
+      "input": "development/missing-ledger.bundle.json",
+      "expected": "expected/missing-ledger.expected.json",
+      "contains_exception": true,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    },
+    {
+      "bundle_id": "missing-invoice",
+      "partition": "development",
+      "template_family": "dev-missing-invoice",
+      "input": "development/missing-invoice.bundle.json",
+      "expected": "expected/missing-invoice.expected.json",
+      "contains_exception": true,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    },
+    {
+      "bundle_id": "clean-two-payments",
+      "partition": "development",
+      "template_family": "dev-clean-two-payments",
+      "input": "development/clean-two-payments.bundle.json",
+      "expected": "expected/clean-two-payments.expected.json",
+      "contains_exception": false,
+      "lineage_group": "seed-purchase-to-payment-v1"
+    }
+  ]
+}

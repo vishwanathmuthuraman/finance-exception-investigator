@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "amount-mismatch",
+  "contains_exception": true,
+  "primary_category": "amount_discrepancy",
+  "expected_outcome": "review_required",
+  "expected_findings": [
+    {
+      "type": "amount_discrepancy",
+      "record_ids": [
+        "I1",
+        "L1"
+      ],
+      "missing_record_type": null,
+      "reason": "Invoice ledger is 500 cents below the invoice total."
+    }
+  ],
+  "expected_links": [
+    {
+      "from_record_id": "I1",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "P1",
+      "to_record_id": "I1",
+      "relationship": "payment_invoice"
+    },
+    {
+      "from_record_id": "L1",
+      "to_record_id": "I1",
+      "relationship": "ledger_invoice"
+    },
+    {
+      "from_record_id": "L2",
+      "to_record_id": "P1",
+      "relationship": "ledger_payment"
+    }
+  ],
+  "expected_outstanding_minor": {
+    "I1": 0
+  },
+  "required_evidence": [
+    {
+      "record_id": "I1",
+      "pointer": "/amount_minor"
+    },
+    {
+      "record_id": "L1",
+      "pointer": "/amount_minor"
+    }
+  ],
+  "diagnosis_concepts": [
+    "Invoice ledger differs from invoice by USD 5.",
+    "Payment agrees with invoice; payment agreement does not resolve the ledger mismatch."
+  ],
+  "oracle_note": "Expected rules semantics only; this file is evaluator-only and is not a measured application output."
+}

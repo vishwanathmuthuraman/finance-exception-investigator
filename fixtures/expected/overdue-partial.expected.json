@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "overdue-partial",
+  "contains_exception": true,
+  "primary_category": "overdue_balance",
+  "expected_outcome": "review_required",
+  "expected_findings": [
+    {
+      "type": "overdue_balance",
+      "record_ids": [
+        "I1",
+        "P1"
+      ],
+      "missing_record_type": null,
+      "reason": "6000 cents remain after the invoice due date."
+    }
+  ],
+  "expected_links": [
+    {
+      "from_record_id": "I1",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "P1",
+      "to_record_id": "I1",
+      "relationship": "payment_invoice"
+    },
+    {
+      "from_record_id": "L1",
+      "to_record_id": "I1",
+      "relationship": "ledger_invoice"
+    },
+    {
+      "from_record_id": "L2",
+      "to_record_id": "P1",
+      "relationship": "ledger_payment"
+    }
+  ],
+  "expected_outstanding_minor": {
+    "I1": 6000
+  },
+  "required_evidence": [
+    {
+      "record_id": "I1",
+      "pointer": "/due_on"
+    },
+    {
+      "record_id": "I1",
+      "pointer": "/amount_minor"
+    },
+    {
+      "record_id": "P1",
+      "pointer": "/amount_minor"
+    }
+  ],
+  "diagnosis_concepts": [
+    "USD 60 remains outstanding after 2026-01-20."
+  ],
+  "oracle_note": "Expected rules semantics only; this file is evaluator-only and is not a measured application output."
+}

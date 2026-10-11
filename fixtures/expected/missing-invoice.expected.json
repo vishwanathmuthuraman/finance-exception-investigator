@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "missing-invoice",
+  "contains_exception": true,
+  "primary_category": "missing_record",
+  "expected_outcome": "insufficient_evidence",
+  "expected_findings": [
+    {
+      "type": "missing_record",
+      "record_ids": [
+        "P1",
+        "L1"
+      ],
+      "missing_record_type": "invoice",
+      "reason": "Payment and invoice ledger refer to absent invoice INV-001."
+    }
+  ],
+  "expected_links": [
+    {
+      "from_record_id": "L2",
+      "to_record_id": "P1",
+      "relationship": "ledger_payment"
+    }
+  ],
+  "expected_outstanding_minor": {},
+  "required_evidence": [
+    {
+      "record_id": "P1",
+      "pointer": "/invoice_ref"
+    },
+    {
+      "record_id": "L1",
+      "pointer": "/invoice_ref"
+    }
+  ],
+  "diagnosis_concepts": [
+    "Request invoice INV-001.",
+    "Invoice balance cannot be established from the available records."
+  ],
+  "oracle_note": "Expected rules semantics only; this file is evaluator-only and is not a measured application output."
+}

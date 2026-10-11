@@ -1,0 +1,2 @@
+bundle_id,template_family,lineage_group,as_of,currency,record_id,supplier_id,invoice_number,order_ref,issued_on,due_on,amount_minor
+clean-settled,dev-clean-settled,seed-purchase-to-payment-v1,2026-01-31,USD,I1,SYN-SUP-001,INV-001,PO-001,2026-01-05,2026-01-20,10000
