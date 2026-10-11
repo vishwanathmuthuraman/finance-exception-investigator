@@ -1,6 +1,6 @@
 # 03 — Public milestones
 
-The repository currently contains a specification, contracts and eight synthetic development bundles. Application implementation and benchmark execution are pending.
+Initial offline components are implemented and verified. See [component progress and actual evidence](IMPLEMENTATION.md). M1 and M2 have initial importer/reconciler evidence; M3 has field citations only. Storage idempotency, review workflow and the comparative study remain pending. The milestones below retain their complete acceptance boundaries.
 
 | Milestone | Intended result | Evidence required |
 |---|---|---|
@@ -13,6 +13,6 @@ The repository currently contains a specification, contracts and eight synthetic
 
 Read the [requirements](01-product-requirements.md), [architecture](02-architecture.md), [evaluation protocol](04-evaluation.md) and [definition of done](05-definition-of-done.md). The eight starter bundles illustrate semantics; they are not the planned held-out corpus or proof of detection quality.
 
-The intended application uses a local command-line interface with a review queue and evidence view. There is no application quick start today. Commands may become public usage instructions after they have been implemented and verified.
+The intended application uses a local command-line interface with a review queue and evidence view. The README contains a tested quick start for explicit-reference reconciliation. Other commands remain future targets until implemented and verified.
 
 Milestones require evidence linked to a specific software revision. Keep deterministic findings distinct from model hypotheses, and distinguish a reproducible research artifact from a product that meets its proposed performance targets. No milestone authorizes financial posting or real payment activity.

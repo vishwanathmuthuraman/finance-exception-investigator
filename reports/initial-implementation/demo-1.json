@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "kind": "deterministic_reconciliation",
+  "input_sha256": "4831ef621382e414f69b0a126f3a8104f8d4fe0e3b5665cb830efe6a87795e51",
+  "bundle_id": "overdue-partial",
+  "currency": "USD",
+  "as_of": "2026-01-31",
+  "outcome": "review_required",
+  "links": [
+    {
+      "from_record_id": "I1",
+      "to_record_id": "O1",
+      "relationship": "invoice_order"
+    },
+    {
+      "from_record_id": "P1",
+      "to_record_id": "I1",
+      "relationship": "payment_invoice"
+    },
+    {
+      "from_record_id": "L1",
+      "to_record_id": "I1",
+      "relationship": "ledger_invoice"
+    },
+    {
+      "from_record_id": "L2",
+      "to_record_id": "P1",
+      "relationship": "ledger_payment"
+    }
+  ],
+  "findings": [
+    {
+      "type": "overdue_balance",
+      "record_ids": [
+        "I1",
+        "P1"
+      ],
+      "missing_record_type": null,
+      "difference_minor": 6000,
+      "citations": [
+        {
+          "record_id": "I1",
+          "pointer": "/due_on"
+        },
+        {
+          "record_id": "P1",
+          "pointer": "/amount_minor"
+        }
+      ]
+    }
+  ],
+  "outstanding_minor": {
+    "I1": 6000
+  },
+  "ai_status": "not_implemented",
+  "matching_scope": "normalized_explicit_references_only"
+}

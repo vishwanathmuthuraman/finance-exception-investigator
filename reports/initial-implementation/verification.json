@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "scope": "initial_offline_components_only",
+  "verified_at": "2026-10-11T13:32:51.348313+00:00",
+  "python": "3.12.13",
+  "platform": "Darwin",
+  "package_version": "0.1.0",
+  "clean_wheel_install": true,
+  "wheel_run_outside_checkout": true,
+  "schemas_loaded_from_installed_wheel": true,
+  "behavioral_tests": {
+    "command": "python -m pytest -q tests",
+    "passed": 27,
+    "failed": 0
+  },
+  "ruff": {
+    "lint": "passed",
+    "format": "passed"
+  },
+  "uv_lock_sha256": "389423d775c946bf8d7870aacb7272ec475542c41085fa664835a688cb721b54",
+  "implementation_files_sha256": {
+    "src/finance_exception_investigator/__init__.py": "567facf79bbbd56a4b5bc1f80b4df6967d1e573100fdc680ab6591a658e3e77f",
+    "src/finance_exception_investigator/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/finance_exception_investigator/cli.py": "67b320e48d271aed04f5e0d2aa8018550f67449c92f06f1f58a71013dd8b3c60",
+    "src/finance_exception_investigator/common.py": "38c64e19f828112a4e547fd08da3f3d1a9d1ccd21cfe01f797d6bf884c300287",
+    "src/finance_exception_investigator/core.py": "5231728765d9b34bda514f1930b50edaf2298ffe558f2fd898a86f18fc6a0c3f",
+    "tests/test_cli.py": "57e2931fbbc1ca89af75133d5880657def547f93bb0e092522175da4c14924d8",
+    "tests/test_core.py": "95f74ae8026e7e16af535794540684f23aa504ec6f6e12a4a21cdae49cbabaf3",
+    "schemas/bundle.schema.json": "8d905f528bf64b9cd9b980c55c8b36d2d333b6a4c582cfe03477e0b77a74ce29",
+    "schemas/expected-outcome.schema.json": "8b3fe9009be43337c46fe214a27e81fc0f57384a8b73fcaab13df07756003713",
+    "schemas/investigation-report.schema.json": "bd2c4560d627af9cf113d956e00934d9d76b8cc83b931a79198813a6c11df6b3",
+    "schemas/review-event.schema.json": "48e0b3cc05385e7429832e37e030de94c00eeb62a637a9e2a2a99c11c2925931",
+    "schemas/strategy-input.schema.json": "6529cd8f67e482b37b0eb556408f9562ce8e20462916960a5a63c3cffa652531",
+    "pyproject.toml": "c0fbba31b6feb0e8046c8b87ec0325ac1428a0300fe4cd6f72b7b7e68a8b7fbe",
+    "uv.lock": "389423d775c946bf8d7870aacb7272ec475542c41085fa664835a688cb721b54",
+    ".python-version": "aa0d6581054e6e4ff3f91839deca7a854ad37221b8784d060b42d0f847ff1a3b"
+  },
+  "demos": [
+    {
+      "input": "fixtures/development/overdue-partial.bundle.json",
+      "input_sha256": "e0f3c841b315e27efc1f5cba9c5a7e7e2d4621e2182a3db11abbdcdea1b7c062",
+      "command": "fei reconcile fixtures/development/overdue-partial.bundle.json",
+      "exit_code": 0,
+      "output": "demo-1.json",
+      "output_sha256": "265492b71c7c1266c4962577e862a6d145149530a4ef3d858e2040d34319f179"
+    }
+  ],
+  "held_out_benchmark_executed": false,
+  "production_validated": false,
+  "limits": [
+    "Development fixtures and boundary tests only.",
+    "No predictive model or customer outcome is evaluated.",
+    "No live provider action is taken."
+  ]
+}
