@@ -1,6 +1,6 @@
 # 08 — Publication and release
 
-Status: specification and synthetic fixtures prepared for authorized public GitHub sharing. Public availability of this blueprint is not an application release; implementation and evaluation remain uncompleted. License selection is pending, and no code, documentation or synthetic-data license grant is supplied.
+Status: specification and synthetic fixtures prepared for authorized public GitHub sharing. Public availability of this blueprint is not an application release; implementation and evaluation remain uncompleted. Original code, documentation and synthetic fixtures are licensed under Apache-2.0; see LICENSE and NOTICE. Third-party material retains its own terms.
 
 ## Before any public release
 
