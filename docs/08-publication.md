@@ -24,6 +24,6 @@ Use a concise case study: problem, narrow scope, deterministic baseline, optiona
 
 ## Suggested initial public description
 
-“Finance Exception Investigator is a planned local reconciliation workflow for fictional order, invoice, payment and ledger records. This repository currently contains requirements, architecture, build tasks, schemas and synthetic examples. Application implementation and evaluation have not started.”
+“ReconcileTrail is a planned local reconciliation workflow for fictional order, invoice, payment and ledger records. This repository currently contains requirements, architecture, build tasks, schemas and synthetic examples. Initial offline reconciliation and CSV import are implemented; the complete workflow and evaluation remain pending.”
 
 Once complete, replace this with the actual supported capabilities and measured results. Preserve a dated changelog so readers can distinguish specification, prototype and evaluated release.

@@ -1,6 +1,6 @@
-# Finance Exception Investigator
+# ReconcileTrail — Financial reconciliation research
 
-![Finance Exception Investigator — Follow the discrepancy. Preserve the evidence.](docs/assets/overview.svg)
+![ReconcileTrail — Follow the discrepancy. Preserve the evidence.](docs/assets/overview.svg)
 
 [![Documentation integrity](https://github.com/vishwanathmuthuraman/finance-exception-investigator/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/finance-exception-investigator/actions/workflows/docs.yml)
 [![Implementation checks](https://github.com/vishwanathmuthuraman/finance-exception-investigator/actions/workflows/implementation.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/finance-exception-investigator/actions/workflows/implementation.yml)
@@ -10,6 +10,8 @@
 Use deterministic reconciliation to establish the exception, then attach record-linked explanations and a reviewable evidence trail.
 
 **Stage: initial offline implementation.** Runnable Python components, synthetic demos and behavioral tests are available. The complete workflow, predictive/model evaluation and production product remain pending.
+
+This is the public research project previously called **Finance Exception Investigator**. The repository URL, Python package and CLI commands remain unchanged.
 
 ## Run the initial implementation
 
